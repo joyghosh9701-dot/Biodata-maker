@@ -1,8 +1,7 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<!-- মোবাইলে পুরো পেজ দেখানোর জন্য ফিক্সড ভিউপোর্ট -->
 <meta name="viewport" content="width=1024"> 
 <title>Bio Data Maker</title>
 
@@ -15,7 +14,6 @@
   body {
     background-color: #444;
     margin: 0;
-    /* উপরে বাটনের জন্য অনেক জায়গা রাখা হলো */
     padding-top: 150px; 
     padding-bottom: 50px;
     font-family: 'Tinos', 'Times New Roman', serif;
@@ -24,18 +22,19 @@
     min-width: 220mm;
   }
 
-  /* A4 পেজ ডিজাইন */
+  /* A4 পেজ ডিজাইন - ফিক্স করা হয়েছে */
   .a4-page {
     width: 210mm;
-    min-height: 297mm; /* ফিক্সড হাইট সরিয়ে min-height করা হলো যাতে কেটে না যায় */
+    /* এখানে ট্রিক করা হয়েছে: 297mm এর বদলে 296mm দেওয়া হলো যাতে ওভারফ্লো না হয় */
+    height: 296mm; 
     background: white;
     position: relative;
     padding: 15mm;
     box-sizing: border-box;
     box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    overflow: hidden; /* বাইরে কিছু গেলে দেখা যাবে না */
   }
 
-  /* ডবল বর্ডার */
   .border-outer {
     border: 2px solid black;
     height: 100%;
@@ -52,7 +51,6 @@
     flex-direction: column;
   }
 
-  /* হেডিং */
   h1 {
     text-align: center;
     font-size: 16pt;
@@ -71,7 +69,6 @@
     font-weight: bold;
   }
 
-  /* ছবির বক্স */
   .photo-box {
     position: absolute;
     top: 50px;
@@ -98,7 +95,6 @@
     flex: 1;
   }
 
-  /* লাইনের গ্যাপ কমানো হয়েছে যাতে সব ধরে */
   .row {
     display: flex;
     margin-bottom: 8px; 
@@ -130,7 +126,6 @@
     background-color: rgba(255, 255, 0, 0.1);
   }
 
-  /* টেবিল */
   table {
     width: 100%;
     border-collapse: collapse;
@@ -146,7 +141,6 @@
   th { font-weight: bold; }
   td { font-weight: bold; outline: none; color: #444; }
 
-  /* ডিক্লারেশন */
   .declaration-title {
     text-align: center;
     text-decoration: underline;
@@ -161,7 +155,6 @@
     margin-bottom: 20px;
   }
 
-  /* ফুটার (সিগনেচার) */
   .footer {
     margin-top: 30px;
     display: flex;
@@ -181,12 +174,10 @@
     margin-right: 20px;
   }
 
-  /* ------------------------------------------- */
-  /* বাটন ডিজাইন (উপরে এবং বড় সাইজ) */
-  /* ------------------------------------------- */
+  /* বাটন মেনু */
   .top-menu {
     position: fixed;
-    top: 30px; /* একদম উপরে */
+    top: 30px; 
     left: 50%;
     transform: translateX(-50%);
     background-color: rgba(0, 0, 0, 0.9);
@@ -202,9 +193,9 @@
 
   .menu-btn {
     border: none;
-    padding: 15px 30px; /* বাটন বড় করা হয়েছে */
+    padding: 15px 30px; 
     border-radius: 40px;
-    font-size: 24px; /* লেখার সাইজ বড় */
+    font-size: 24px; 
     font-weight: bold;
     cursor: pointer;
     color: white;
@@ -216,7 +207,6 @@
   .btn-mobile { background: linear-gradient(45deg, #ff512f, #dd2476); }
   .btn-laptop { background: linear-gradient(45deg, #11998e, #38ef7d); }
 
-  /* প্রিন্ট করার সময় বাটন গায়েব */
   @media print {
     body { background: none; padding: 0; margin: 0; min-width: 0; }
     .top-menu { display: none !important; }
@@ -230,7 +220,7 @@
 </head>
 <body>
 
-<!-- বাটন মেনু (এখন উপরে) -->
+<!-- বাটন মেনু -->
 <div class="top-menu">
   <button class="menu-btn btn-mobile" onclick="downloadPDFMobile()">
     ⬇️ Save PDF
@@ -387,8 +377,9 @@
 
     const element = document.getElementById('element-to-print');
     
+    // PDF সেটিংস (মোবাইলের জন্য একদম ১ পেজে আনার ট্রিক)
     const opt = {
-      margin:       0,
+      margin:       0, // মার্জিন ০
       filename:     'My_Bio_Data.pdf',
       image:        { type: 'jpeg', quality: 0.98 },
       html2canvas:  { scale: 2, useCORS: true, scrollY: 0 }, 
@@ -402,4 +393,4 @@
 </script>
 
 </body>
-</html> 
+</html>
