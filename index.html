@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<!-- Viewport setting adjusted to allow zooming like a PDF -->
+<!-- Viewport fixed to show full A4 layout on mobile -->
 <meta name="viewport" content="width=1024"> 
 <title>Bio Data Template</title>
 <style>
@@ -15,7 +15,7 @@
     font-family: 'Tinos', 'Times New Roman', serif;
     display: flex;
     justify-content: center;
-    min-width: 220mm; /* Force browser to keep A4 width */
+    min-width: 220mm;
   }
 
   .a4-page {
@@ -61,7 +61,7 @@
     font-weight: bold;
   }
 
-  /* Photo Box - Always on the right */
+  /* Photo Box */
   .photo-box {
     position: absolute;
     top: 50px;
@@ -88,7 +88,7 @@
     z-index: 1;
   }
 
-  /* Lines Layout - Always Side by Side */
+  /* Lines Layout */
   .row {
     display: flex;
     margin-bottom: 12px; 
@@ -112,7 +112,7 @@
     font-weight: bold;
     text-transform: uppercase;
     line-height: 1.4;
-    white-space: pre-wrap; /* Keeps text formatting */
+    white-space: pre-wrap;
   }
   
   .value:focus {
@@ -151,12 +151,25 @@
     line-height: 1.4;
   }
 
-  /* Footer */
+  /* Footer Section (Place, Date, Signature) */
   .footer {
-    margin-top: 60px;
+    margin-top: 80px; /* Space from declaration */
     display: flex;
     justify-content: space-between;
     font-size: 11pt;
+    font-weight: bold;
+  }
+  
+  .footer-left {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Space between Place and Date */
+  }
+
+  .signature-section {
+    text-align: center;
+    margin-right: 20px;
+    margin-top: 20px;
   }
 
   /* Print Button */
@@ -293,4 +306,19 @@
         <!-- Extra Qual -->
         <div class="row" style="margin-top: 10px;">
           <span class="label bold-label" style="width: auto; min-width: auto; margin-right: 5px; text-decoration: underline;">Extra Qualification:-</span>
-          <span class="value" contenteditable="true" spellcheck="fal
+          <span class="value" contenteditable="true" spellcheck="false">YOUR COMPUTER OR EXTRA COURSE NAME</span>
+        </div>
+
+        <!-- Declaration -->
+        <div class="declaration-title">DECLARATION</div>
+        
+        <div class="declaration-text" contenteditable="true" spellcheck="false">
+          I have a declare that above stated information is true the best of my knowledge an delete & my candidature is likely to be cancelled if any particulars submitted are found to be incorrect at any stage of recruitment process.
+        </div>
+
+        <!-- Footer Area (Added Back) -->
+        <div class="footer">
+          <div class="footer-left">
+            <div class="row" style="margin-bottom: 0;">
+              <span class="label" style="min-width: 60px;">PLACE -</span>
+              <span class="value" content
