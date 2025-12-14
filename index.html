@@ -2,8 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<!-- Viewport setting -->
 <meta name="viewport" content="width=1024"> 
 <title>Bio Data Maker</title>
+
+<!-- SEO Meta Tags (আপনার দেওয়া তথ্য) -->
+<meta name="description" content="Create professional Bio-Data and CV for marriage or job in 1 click. Free online Bio-Data maker format for mobile and computer.">
+<meta name="keywords" content="bio data maker, job biodata, marriage biodata, cv maker, online resume builder, free pdf maker, biodata format pdf">
+<meta name="author" content="Joy Ghosh">
 
 <!-- PDF লাইব্রেরি -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
@@ -22,17 +28,16 @@
     min-width: 220mm;
   }
 
-  /* A4 পেজ ডিজাইন - ফিক্স করা হয়েছে */
+  /* A4 পেজ - হাইট কমিয়ে সেফ রাখা হয়েছে (ফালতু পেজ আটকাতে) */
   .a4-page {
     width: 210mm;
-    /* এখানে ট্রিক করা হয়েছে: 297mm এর বদলে 296mm দেওয়া হলো যাতে ওভারফ্লো না হয় */
-    height: 296mm; 
+    height: 285mm; /* 297mm এর বদলে 285mm */
     background: white;
     position: relative;
     padding: 15mm;
     box-sizing: border-box;
     box-shadow: 0 0 20px rgba(0,0,0,0.5);
-    overflow: hidden; /* বাইরে কিছু গেলে দেখা যাবে না */
+    overflow: hidden; 
   }
 
   .border-outer {
@@ -156,13 +161,13 @@
   }
 
   .footer {
-    margin-top: 30px;
+    margin-top: 20px;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
     font-size: 11pt;
     font-weight: bold;
-    padding-bottom: 10px;
+    padding-bottom: 5px;
   }
   
   .footer-left div {
@@ -174,7 +179,7 @@
     margin-right: 20px;
   }
 
-  /* বাটন মেনু */
+  /* বাটন মেনু (উপরে) */
   .top-menu {
     position: fixed;
     top: 30px; 
@@ -377,9 +382,9 @@
 
     const element = document.getElementById('element-to-print');
     
-    // PDF সেটিংস (মোবাইলের জন্য একদম ১ পেজে আনার ট্রিক)
+    // PDF সেটিংস
     const opt = {
-      margin:       0, // মার্জিন ০
+      margin:       0,
       filename:     'My_Bio_Data.pdf',
       image:        { type: 'jpeg', quality: 0.98 },
       html2canvas:  { scale: 2, useCORS: true, scrollY: 0 }, 
