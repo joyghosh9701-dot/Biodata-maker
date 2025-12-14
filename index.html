@@ -1,7 +1,8 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<!-- মোবাইলে পুরো পেজ দেখানোর জন্য ফিক্সড ভিউপোর্ট -->
 <meta name="viewport" content="width=1024"> 
 <title>Bio Data Maker</title>
 
@@ -14,27 +15,27 @@
   body {
     background-color: #444;
     margin: 0;
-    padding: 20px;
-    padding-bottom: 150px; /* বাটনের জন্য জায়গা */
+    /* উপরে বাটনের জন্য অনেক জায়গা রাখা হলো */
+    padding-top: 150px; 
+    padding-bottom: 50px;
     font-family: 'Tinos', 'Times New Roman', serif;
     display: flex;
     justify-content: center;
     min-width: 220mm;
   }
 
-  /* A4 পেজ ফিক্সড সাইজ (যাতে ২য় পেজ না আসে) */
+  /* A4 পেজ ডিজাইন */
   .a4-page {
     width: 210mm;
-    height: 297mm; /* ফিক্সড হাইট */
+    min-height: 297mm; /* ফিক্সড হাইট সরিয়ে min-height করা হলো যাতে কেটে না যায় */
     background: white;
     position: relative;
     padding: 15mm;
     box-sizing: border-box;
     box-shadow: 0 0 20px rgba(0,0,0,0.5);
-    overflow: hidden; /* লেখা বেশি হলে লুকিয়ে যাবে, ২য় পেজে যাবে না */
   }
 
-  /* ডবল বর্ডার ডিজাইন */
+  /* ডবল বর্ডার */
   .border-outer {
     border: 2px solid black;
     height: 100%;
@@ -51,11 +52,12 @@
     flex-direction: column;
   }
 
+  /* হেডিং */
   h1 {
     text-align: center;
     font-size: 16pt;
     text-decoration: underline;
-    margin-top: 5px;
+    margin-top: 0;
     margin-bottom: 20px;
     text-transform: uppercase;
     font-weight: bold;
@@ -65,11 +67,11 @@
   h3 {
     font-size: 13pt;
     text-decoration: underline;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
     font-weight: bold;
   }
 
-  /* Photo Box */
+  /* ছবির বক্স */
   .photo-box {
     position: absolute;
     top: 50px;
@@ -90,16 +92,16 @@
     z-index: 10;
   }
 
-  /* Content Styling */
   .content {
     position: relative;
     z-index: 1;
     flex: 1;
   }
 
+  /* লাইনের গ্যাপ কমানো হয়েছে যাতে সব ধরে */
   .row {
     display: flex;
-    margin-bottom: 9px; /* গ্যাপ একটু কমানো হলো */
+    margin-bottom: 8px; 
     font-size: 11pt;
     align-items: flex-start;
   }
@@ -128,7 +130,7 @@
     background-color: rgba(255, 255, 0, 0.1);
   }
 
-  /* টেবিল ডিজাইন */
+  /* টেবিল */
   table {
     width: 100%;
     border-collapse: collapse;
@@ -143,31 +145,31 @@
   }
   th { font-weight: bold; }
   td { font-weight: bold; outline: none; color: #444; }
-  td:focus { color: #000; background-color: rgba(255, 255, 0, 0.1); }
 
-  /* Declaration */
+  /* ডিক্লারেশন */
   .declaration-title {
     text-align: center;
     text-decoration: underline;
     font-weight: bold;
     margin-top: 15px;
-    margin-bottom: 8px;
+    margin-bottom: 5px;
   }
   .declaration-text {
     text-align: justify;
     font-size: 10pt;
     line-height: 1.3;
+    margin-bottom: 20px;
   }
 
-  /* Footer Section - একটু উপরে তোলা হয়েছে */
+  /* ফুটার (সিগনেচার) */
   .footer {
-    margin-top: 40px; 
+    margin-top: 30px;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
     font-size: 11pt;
     font-weight: bold;
-    padding-bottom: 5px;
+    padding-bottom: 10px;
   }
   
   .footer-left div {
@@ -179,44 +181,46 @@
     margin-right: 20px;
   }
 
-  /* Floating Menu */
-  .floating-menu {
+  /* ------------------------------------------- */
+  /* বাটন ডিজাইন (উপরে এবং বড় সাইজ) */
+  /* ------------------------------------------- */
+  .top-menu {
     position: fixed;
-    bottom: 30px;
+    top: 30px; /* একদম উপরে */
     left: 50%;
     transform: translateX(-50%);
-    background-color: rgba(0, 0, 0, 0.85);
-    padding: 15px 25px;
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 15px 30px;
     border-radius: 50px;
     display: flex;
-    gap: 15px;
+    gap: 20px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.5);
     z-index: 9999;
     align-items: center;
+    white-space: nowrap;
   }
 
   .menu-btn {
     border: none;
-    padding: 10px 20px;
-    border-radius: 30px;
-    font-size: 16px;
+    padding: 15px 30px; /* বাটন বড় করা হয়েছে */
+    border-radius: 40px;
+    font-size: 24px; /* লেখার সাইজ বড় */
     font-weight: bold;
     cursor: pointer;
     color: white;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
   }
-  .menu-btn:active { transform: scale(0.95); }
 
   .btn-mobile { background: linear-gradient(45deg, #ff512f, #dd2476); }
   .btn-laptop { background: linear-gradient(45deg, #11998e, #38ef7d); }
 
-  /* Print Styles */
+  /* প্রিন্ট করার সময় বাটন গায়েব */
   @media print {
     body { background: none; padding: 0; margin: 0; min-width: 0; }
-    .a4-page { box-shadow: none; margin: 0; width: 210mm; height: 297mm; overflow: hidden; }
-    .floating-menu { display: none !important; }
+    .top-menu { display: none !important; }
+    .a4-page { margin: 0; box-shadow: none; width: 210mm; height: 297mm; }
     .value { color: #000; }
     td { color: #000; }
     @page { margin: 0; size: A4; }
@@ -226,7 +230,17 @@
 </head>
 <body>
 
-<!-- The A4 Content -->
+<!-- বাটন মেনু (এখন উপরে) -->
+<div class="top-menu">
+  <button class="menu-btn btn-mobile" onclick="downloadPDFMobile()">
+    ⬇️ Save PDF
+  </button>
+  <button class="menu-btn btn-laptop" onclick="window.print()">
+    🖨️ Print
+  </button>
+</div>
+
+<!-- A4 পেজ -->
 <div class="a4-page" id="element-to-print">
   <div class="border-outer">
     <div class="border-inner">
@@ -291,7 +305,7 @@
           <span class="value" contenteditable="true" spellcheck="false">VILL/ROAD, P.O, P.S, DIST, PIN CODE, STATE</span>
         </div>
         
-        <div class="row" style="margin-top: 15px;">
+        <div class="row" style="margin-top: 10px;">
           <span class="label bold-label">CONTACT NO -</span>
           <span class="value" contenteditable="true" spellcheck="false">YOUR MOBILE NUMBER</span>
         </div>
@@ -325,7 +339,7 @@
           </tbody>
         </table>
 
-        <div class="row" style="margin-top: 8px;">
+        <div class="row" style="margin-top: 5px;">
           <span class="label bold-label" style="width: auto; min-width: auto; margin-right: 5px; text-decoration: underline;">Extra Qualification:-</span>
           <span class="value" contenteditable="true" spellcheck="false">YOUR COMPUTER OR EXTRA COURSE NAME</span>
         </div>
@@ -333,4 +347,59 @@
         <div class="declaration-title">DECLARATION</div>
         
         <div class="declaration-text" contenteditable="true" spellcheck="false">
-          I have a declare that above stated information is true the best of my knowledge an delete & my candidature is likely to be cancelled if any particulars submitted are found
+          I have a declare that above stated information is true the best of my knowledge an delete & my candidature is likely to be cancelled if any particulars submitted are found to be incorrect at any stage of recruitment process.
+        </div>
+
+        <div class="footer">
+          <div class="footer-left">
+            <div>PLACE - <span contenteditable="true" spellcheck="false">YOUR PLACE</span></div>
+            <div>DATE - <span contenteditable="true" spellcheck="false">DD/MM/YYYY</span></div>
+          </div>
+          <div class="footer-right">
+            SIGNATURE
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function loadImage(event) {
+    const imageBox = document.getElementById('photoBox');
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        imageBox.style.backgroundImage = "url(" + e.target.result + ")";
+        imageBox.innerText = ""; 
+        imageBox.style.border = "1px solid black"; 
+      }
+      reader.readAsDataURL(file);
+    }
+  }
+
+  function downloadPDFMobile() {
+    const btn = document.querySelector('.btn-mobile');
+    const originalText = btn.innerHTML;
+    btn.innerHTML = "⏳ Processing...";
+
+    const element = document.getElementById('element-to-print');
+    
+    const opt = {
+      margin:       0,
+      filename:     'My_Bio_Data.pdf',
+      image:        { type: 'jpeg', quality: 0.98 },
+      html2canvas:  { scale: 2, useCORS: true, scrollY: 0 }, 
+      jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+    };
+
+    html2pdf().set(opt).from(element).save().then(() => {
+      btn.innerHTML = originalText;
+    });
+  }
+</script>
+
+</body>
+</html> 
