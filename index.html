@@ -1,10 +1,14 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <!-- Viewport fixed to show full A4 layout on mobile -->
 <meta name="viewport" content="width=1024"> 
 <title>Bio Data Template</title>
+
+<!-- PDF জেনারেট করার জন্য এই স্ক্রিপ্ট যুক্ত করা হলো -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Tinos:wght@400;700&display=swap');
 
@@ -12,6 +16,7 @@
     background-color: #525659;
     margin: 0;
     padding: 20px;
+    padding-bottom: 100px; /* নিচে বাটনের জন্য জায়গা */
     font-family: 'Tinos', 'Times New Roman', serif;
     display: flex;
     justify-content: center;
@@ -50,7 +55,7 @@
     font-size: 16pt;
     text-decoration: underline;
     margin-top: 0;
-    margin-bottom: 25px; /* একটু কমানো হলো */
+    margin-bottom: 25px;
     text-transform: uppercase;
     font-weight: bold;
     letter-spacing: 1px;
@@ -88,13 +93,13 @@
   .content {
     position: relative;
     z-index: 1;
-    flex: 1; /* এটা কন্টেন্টকে জায়গা নিতে দেবে */
+    flex: 1;
   }
 
   /* Lines Layout */
   .row {
     display: flex;
-    margin-bottom: 10px; /* গ্যাপ একটু কমানো হলো */
+    margin-bottom: 10px;
     font-size: 11pt;
     align-items: flex-start;
   }
@@ -154,19 +159,19 @@
     line-height: 1.4;
   }
 
-  /* Footer Section - Fixed */
+  /* Footer Section */
   .footer {
-    margin-top: 50px; /* গ্যাপ কমিয়ে দেওয়া হয়েছে যাতে পেজে ধরে */
+    margin-top: 50px;
     display: flex;
     justify-content: space-between;
-    align-items: flex-end; /* নিচে সমান থাকবে */
+    align-items: flex-end;
     font-size: 11pt;
     font-weight: bold;
     padding-bottom: 10px;
   }
   
   .footer-left div {
-    margin-bottom: 15px; /* Place এবং Date এর মধ্যে গ্যাপ */
+    margin-bottom: 15px;
   }
 
   .footer-right {
@@ -174,28 +179,49 @@
     margin-right: 20px;
   }
 
-  /* Print Button */
-  .btn-print {
+  /* ------------------------------------------- */
+  /* NEW BUTTON BAR DESIGN */
+  /* ------------------------------------------- */
+  .action-bar {
     position: fixed;
-    bottom: 30px;
-    right: 30px;
-    padding: 15px 30px;
-    background: #28a745;
-    color: white;
-    font-size: 18px;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-    z-index: 100;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.3);
+    z-index: 1000;
   }
-  .btn-print:hover { background: #218838; }
 
-  /* Print Settings */
+  .btn {
+    padding: 12px 25px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    color: white;
+    transition: 0.3s;
+  }
+
+  .btn-mobile {
+    background-color: #ff9800; /* Orange for Mobile */
+  }
+  .btn-mobile:hover { background-color: #e68900; }
+
+  .btn-laptop {
+    background-color: #28a745; /* Green for Laptop */
+  }
+  .btn-laptop:hover { background-color: #218838; }
+
+  /* Hide buttons during printing */
   @media print {
     body { background: none; padding: 0; margin: 0; min-width: 0; }
     .a4-page { box-shadow: none; margin: 0; width: 100%; height: 100%; }
-    .btn-print { display: none; }
+    .action-bar { display: none !important; } /* Hide the bar */
     .value { color: #000; }
     td { color: #000; }
     @page { margin: 0; size: A4; }
@@ -205,7 +231,8 @@
 </head>
 <body>
 
-<div class="a4-page">
+<!-- The A4 Content (With ID for PDF generation) -->
+<div class="a4-page" id="element-to-print">
   <div class="border-outer">
     <div class="border-inner">
       
@@ -318,7 +345,7 @@
           I have a declare that above stated information is true the best of my knowledge an delete & my candidature is likely to be cancelled if any particulars submitted are found to be incorrect at any stage of recruitment process.
         </div>
 
-        <!-- Footer Area (Improved) -->
+        <!-- Footer Area -->
         <div class="footer">
           <div class="footer-left">
             <div>PLACE - <span contenteditable="true" spellcheck="false">YOUR PLACE</span></div>
@@ -335,10 +362,12 @@
   </div>
 </div>
 
-<button class="btn-print" onclick="window.print()">Download / Print PDF</button>
+<!-- NEW ACTION BAR (Two Buttons) -->
+<div class="action-bar">
+  <button class="btn btn-mobile" onclick="downloadPDFMobile()">📱 Download (Phone)</button>
+  <button class="btn btn-laptop" onclick="window.print()">💻 Print (Laptop)</button>
+</div>
 
 <script>
-  function loadImage(event) {
-    const imageBox = document.getElementById('photoBox');
-    const file = event.target.files[0];
-    i
+  // Photo Upload Logic
+  funct 
