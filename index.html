@@ -41,6 +41,8 @@
     padding: 20px 30px; 
     position: relative;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
   }
 
   h1 {
@@ -48,7 +50,7 @@
     font-size: 16pt;
     text-decoration: underline;
     margin-top: 0;
-    margin-bottom: 30px;
+    margin-bottom: 25px; /* একটু কমানো হলো */
     text-transform: uppercase;
     font-weight: bold;
     letter-spacing: 1px;
@@ -57,7 +59,7 @@
   h3 {
     font-size: 13pt;
     text-decoration: underline;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     font-weight: bold;
   }
 
@@ -86,12 +88,13 @@
   .content {
     position: relative;
     z-index: 1;
+    flex: 1; /* এটা কন্টেন্টকে জায়গা নিতে দেবে */
   }
 
   /* Lines Layout */
   .row {
     display: flex;
-    margin-bottom: 12px; 
+    margin-bottom: 10px; /* গ্যাপ একটু কমানো হলো */
     font-size: 11pt;
     align-items: flex-start;
   }
@@ -124,12 +127,12 @@
   table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 10px;
-    margin-bottom: 20px;
+    margin-top: 8px;
+    margin-bottom: 15px;
   }
   th, td {
     border: 1px solid black;
-    padding: 6px;
+    padding: 5px;
     text-align: center;
     font-size: 11pt;
   }
@@ -142,8 +145,8 @@
     text-align: center;
     text-decoration: underline;
     font-weight: bold;
-    margin-top: 25px;
-    margin-bottom: 15px;
+    margin-top: 20px;
+    margin-bottom: 10px;
   }
   .declaration-text {
     text-align: justify;
@@ -151,25 +154,24 @@
     line-height: 1.4;
   }
 
-  /* Footer Section (Place, Date, Signature) */
+  /* Footer Section - Fixed */
   .footer {
-    margin-top: 80px; /* Space from declaration */
+    margin-top: 50px; /* গ্যাপ কমিয়ে দেওয়া হয়েছে যাতে পেজে ধরে */
     display: flex;
     justify-content: space-between;
+    align-items: flex-end; /* নিচে সমান থাকবে */
     font-size: 11pt;
     font-weight: bold;
+    padding-bottom: 10px;
   }
   
-  .footer-left {
-    display: flex;
-    flex-direction: column;
-    gap: 15px; /* Space between Place and Date */
+  .footer-left div {
+    margin-bottom: 15px; /* Place এবং Date এর মধ্যে গ্যাপ */
   }
 
-  .signature-section {
+  .footer-right {
     text-align: center;
     margin-right: 20px;
-    margin-top: 20px;
   }
 
   /* Print Button */
@@ -316,9 +318,27 @@
           I have a declare that above stated information is true the best of my knowledge an delete & my candidature is likely to be cancelled if any particulars submitted are found to be incorrect at any stage of recruitment process.
         </div>
 
-        <!-- Footer Area (Added Back) -->
+        <!-- Footer Area (Improved) -->
         <div class="footer">
           <div class="footer-left">
-            <div class="row" style="margin-bottom: 0;">
-              <span class="label" style="min-width: 60px;">PLACE -</span>
-              <span class="value" content
+            <div>PLACE - <span contenteditable="true" spellcheck="false">YOUR PLACE</span></div>
+            <div>DATE - <span contenteditable="true" spellcheck="false">DD/MM/YYYY</span></div>
+          </div>
+          
+          <div class="footer-right">
+            SIGNATURE
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<button class="btn-print" onclick="window.print()">Download / Print PDF</button>
+
+<script>
+  function loadImage(event) {
+    const imageBox = document.getElementById('photoBox');
+    const file = event.target.files[0];
+    i
